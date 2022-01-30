@@ -135,8 +135,14 @@ function App() {
 								<button
 									className='outline secondary'
 									onClick={() => {
-										dispatch({ type: 'remove', id: item.id });
-										setPage(Math.ceil(items.length / PAGE_LIMIT));
+										supabase
+											.from('items')
+											.delete()
+											.match({ id: item.id })
+											.then(() => {
+												dispatch({ type: 'remove', id: item.id });
+												setPage(Math.ceil(items.length / PAGE_LIMIT));
+											});
 									}}
 								>
 									-
