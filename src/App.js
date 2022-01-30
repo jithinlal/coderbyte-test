@@ -42,6 +42,7 @@ function App() {
 		}
 	}
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const debouncedSave = React.useCallback(
 		debounce((newOrder) => {
 			dispatch({ type: 'reorder', items: newOrder });
@@ -53,6 +54,7 @@ function App() {
 		debouncedSave([...newOrder, ...items.slice(2 * page)]);
 	};
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const debouncedSetValue = React.useCallback(
 		debounce((item, x, y) => {
 			supabase
